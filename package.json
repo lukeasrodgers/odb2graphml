@@ -15,5 +15,8 @@
   "dependencies": {
     "event-stream": "^3.0.0",
     "jsonstream": "^1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.4"
   }
 }
