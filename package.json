@@ -11,5 +11,9 @@
     "graphml"
   ],
   "author": "Luke Rodgers <lukeasrodgers@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "event-stream": "^3.0.0",
+    "jsonstream": "^1.0.0"
+  }
 }
