@@ -1,0 +1,15 @@
+{
+  "name": "orientdb_graphml",
+  "version": "0.0.1",
+  "description": "Convert orientdb json to graphml",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "orientdb",
+    "graphml"
+  ],
+  "author": "Luke Rodgers <lukeasrodgers@gmail.com>",
+  "license": "MIT"
+}
