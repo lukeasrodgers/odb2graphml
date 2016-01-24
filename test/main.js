@@ -3,8 +3,19 @@ var assert = require('assert');
 
 describe('convertFile', function() {
   it('works', function() {
-    var v = lib.convertFile('foo');
+    var v = lib.convertFile('test/odbmovies.json');
     assert.equal(v, 1);
+  });
+});
+
+describe('extractVerticesEdges', function() {
+  it('works', function(done) {
+    var v = lib.extractVerticesEdges('test/odbmovies.json', ['User'], ['Friend'], function(err, result) {
+      assert.equal(null, err);
+      assert.equal(result.edges.length, 4);
+      assert.equal(result.vertices.length, 3);
+      done();
+    });
   });
 });
 
