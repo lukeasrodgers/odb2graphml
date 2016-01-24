@@ -33,9 +33,11 @@ describe('extractVerticesEdges', function() {
 describe('countNodes', function() {
   describe('when selector is a string', function() {
     it('counts nodes', function(done) {
-      lib.countNodes('test/odbmovies.json', 'records.*', function(err, nodeCount) {
-        assert.equal(null, err);
+      lib.countNodes('test/odbmovies.json', 'records.*').then(function(nodeCount) {
         assert.equal(22, nodeCount);
+        done();
+      }, function(err) {
+        assert.ok(false);
         done();
       });
     });
@@ -50,9 +52,11 @@ describe('countNodes', function() {
         }
       };
       fn.name = 'records.*';
-      lib.countNodes('test/odbmovies.json', fn, function(err, nodeCount) {
-        assert.equal(null, err);
+      lib.countNodes('test/odbmovies.json', fn).then(function(nodeCount) {
         assert.equal(15, nodeCount);
+        done();
+      }, function() {
+        assert.ok(false);
         done();
       });
     });
