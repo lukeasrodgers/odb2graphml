@@ -9,26 +9,30 @@ describe('convertFile', function() {
 });
 
 describe('countNodes', function() {
-  it('counts nodes', function(done) {
-    lib.countNodes('test/odbmovies.json', 'records.*', function(err, nodeCount) {
-      assert.equal(null, err);
-      assert.equal(22, nodeCount);
-      done();
+  describe('when selector is a string', function() {
+    it('counts nodes', function(done) {
+      lib.countNodes('test/odbmovies.json', 'records.*', function(err, nodeCount) {
+        assert.equal(null, err);
+        assert.equal(22, nodeCount);
+        done();
+      });
     });
   });
 
-  it('counts only targeted nodes', function(done) {
-    var fn = {
-      name: 'records.*', 
-      fn: function(n) {
-        return n['@type'] === 'd';
-      }
-    };
-    fn.name = 'records.*';
-    lib.countNodes('test/odbmovies.json', fn, function(err, nodeCount) {
-      assert.equal(null, err);
-      assert.equal(15, nodeCount);
-      done();
+  describe('when selector is an object with a function and string', function() {
+    it('counts only targeted nodes', function(done) {
+      var fn = {
+        name: 'records.*', 
+        fn: function(node) {
+          return node['@type'] === 'd';
+        }
+      };
+      fn.name = 'records.*';
+      lib.countNodes('test/odbmovies.json', fn, function(err, nodeCount) {
+        assert.equal(null, err);
+        assert.equal(15, nodeCount);
+        done();
+      });
     });
   });
 
