@@ -4,7 +4,7 @@
   "description": "Convert orientdb json to graphml",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --reporter spec"
   },
   "keywords": [
     "orientdb",
@@ -13,8 +13,7 @@
   "author": "Luke Rodgers <lukeasrodgers@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "event-stream": "^3.0.0",
-    "jsonstream": "^1.0.0"
+    "oboe": "^2.1.2"
   },
   "devDependencies": {
     "mocha": "^2.3.4"
