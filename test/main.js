@@ -6,12 +6,12 @@ var assert = require('assert');
 
 describe('convertFile', function() {
   it('works', function(done) {
-    var expectedOutput = fs.readFileSync('test/odbmovies.graphml', 'utf8');
+    var expectedOutput = fs.readFileSync('test/odb.graphml', 'utf8');
     var schemaInfo = {
       vertexNames: ['User'],
       edgeNames: ['Friend']
     };
-    var v = lib.convertFile('test/odbmovies.json', schemaInfo).then(function success(actualOutput) {
+    var v = lib.convertFile('test/odb.json', schemaInfo).then(function success(actualOutput) {
       assert.equal(expectedOutput, actualOutput);
       done();
     }).catch(function(err) {
@@ -22,7 +22,7 @@ describe('convertFile', function() {
 
 describe('extractVerticesEdges', function() {
   it('works', function(done) {
-    var v = lib.extractVerticesEdges('test/odbmovies.json', ['User'], ['Friend']).then(function(result) {
+    var v = lib.extractVerticesEdges('test/odb.json', ['User'], ['Friend']).then(function(result) {
       assert.equal(result.edges.length, 4);
       assert.equal(result.vertices.length, 3);
       done();
@@ -38,7 +38,7 @@ describe('extractVerticesEdges', function() {
 describe('countNodes', function() {
   describe('when selector is a string', function() {
     it('counts nodes', function(done) {
-      lib.countNodes('test/odbmovies.json', 'records.*').then(function(nodeCount) {
+      lib.countNodes('test/odb.json', 'records.*').then(function(nodeCount) {
         assert.equal(22, nodeCount);
         done();
       }, function(err) {
@@ -59,7 +59,7 @@ describe('countNodes', function() {
         }
       };
       fn.name = 'records.*';
-      lib.countNodes('test/odbmovies.json', fn).then(function(nodeCount) {
+      lib.countNodes('test/odb.json', fn).then(function(nodeCount) {
         assert.equal(15, nodeCount);
         done();
       }, function() {
