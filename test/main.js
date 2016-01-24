@@ -1,19 +1,30 @@
+var fs = require('fs');
 var lib = require('../');
 var assert = require('assert');
 
+'use strict';
+
 describe('convertFile', function() {
   it('works', function() {
-    var v = lib.convertFile('test/odbmovies.json');
+    var expectedOutput = fs.readFileSync('test/odbmovies.graphml', 'utf8');
+    var v = lib.convertFile('test/odbmovies.json').then(function success() {
+      var actualOuptput = fs.readFileSync('test/tmp.graphml', 'utf8');
+      assert(expectedOutput, actualOuptput);
+    }, function fail() {
+      assert.ok(false);
+    });
     assert.equal(v, 1);
   });
 });
 
 describe('extractVerticesEdges', function() {
   it('works', function(done) {
-    var v = lib.extractVerticesEdges('test/odbmovies.json', ['User'], ['Friend'], function(err, result) {
-      assert.equal(null, err);
+    var v = lib.extractVerticesEdges('test/odbmovies.json', ['User'], ['Friend']).then(function(result) {
       assert.equal(result.edges.length, 4);
       assert.equal(result.vertices.length, 3);
+      done();
+    }, function() {
+      assert.ok(false);
       done();
     });
   });
