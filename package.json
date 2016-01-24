@@ -13,6 +13,7 @@
   "author": "Luke Rodgers <lukeasrodgers@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "curry": "^1.0",
     "oboe": "^2.1.2"
   },
   "devDependencies": {

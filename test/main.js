@@ -5,15 +5,18 @@ var assert = require('assert');
 'use strict';
 
 describe('convertFile', function() {
-  it('works', function() {
+  it('works', function(done) {
     var expectedOutput = fs.readFileSync('test/odbmovies.graphml', 'utf8');
-    var v = lib.convertFile('test/odbmovies.json').then(function success() {
-      var actualOuptput = fs.readFileSync('test/tmp.graphml', 'utf8');
-      assert(expectedOutput, actualOuptput);
-    }, function fail() {
-      assert.ok(false);
+    var schemaInfo = {
+      vertexNames: ['User'],
+      edgeNames: ['Friend']
+    };
+    var v = lib.convertFile('test/odbmovies.json', schemaInfo).then(function success(actualOutput) {
+      assert.equal(expectedOutput, actualOutput);
+      done();
+    }).catch(function(err) {
+      done(err);
     });
-    assert.equal(v, 1);
   });
 });
 
@@ -26,6 +29,8 @@ describe('extractVerticesEdges', function() {
     }, function() {
       assert.ok(false);
       done();
+    }).catch(function(err) {
+      done(err);
     });
   });
 });
@@ -39,6 +44,8 @@ describe('countNodes', function() {
       }, function(err) {
         assert.ok(false);
         done();
+      }).catch(function(err) {
+        done(err);
       });
     });
   });
@@ -58,6 +65,8 @@ describe('countNodes', function() {
       }, function() {
         assert.ok(false);
         done();
+      }).catch(function(err) {
+        done(err);
       });
     });
   });
