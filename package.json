@@ -13,10 +13,15 @@
   "author": "Luke Rodgers <lukeasrodgers@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "commander": "^2.9.0",
     "curry": "^1.0",
     "oboe": "^2.1.2"
   },
   "devDependencies": {
     "mocha": "^2.3.4"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "odb2graphml": "lib/cli.js"
   }
 }
