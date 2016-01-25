@@ -1,5 +1,5 @@
 {
-  "name": "orientdb_graphml",
+  "name": "odb2graphml",
   "version": "0.0.1",
   "description": "Convert orientdb json to graphml",
   "main": "index.js",
