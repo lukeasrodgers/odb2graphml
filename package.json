@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "Convert orientdb json to graphml",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukeasrodgers/odb2graphml"
+  },
   "scripts": {
     "test": "mocha --reporter spec"
   },
