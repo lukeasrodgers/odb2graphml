@@ -13,10 +13,27 @@ describe('convertFile', function() {
     };
     var v = lib.convertFile('test/support/odb.json', 'test/support/out.graphml', schemaInfo).then(function() {
       actualOutput = fs.readFileSync('test/support/out.graphml', 'utf8');
-      assert.equal(expectedOutput, actualOutput);
+      assert.equal(actualOutput, expectedOutput);
       done();
     }).catch(function(err) {
       done(err);
+    });
+  });
+
+  describe('input with ampersands', function() {
+    it('correctly converts ampersands', function(done) {
+      var expectedOutput = fs.readFileSync('test/support/ampersand.graphml', 'utf8');
+      var schemaInfo = {
+        vertexNames: ['User'],
+        edgeNames: []
+      };
+      var v = lib.convertFile('test/support/ampersand.json', 'test/support/out.graphml', schemaInfo).then(function() {
+        actualOutput = fs.readFileSync('test/support/out.graphml', 'utf8');
+        assert.equal(actualOutput, expectedOutput);
+        done();
+      }).catch(function(err) {
+        done(err);
+      });
     });
   });
 });
