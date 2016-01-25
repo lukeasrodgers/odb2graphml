@@ -1,6 +1,6 @@
 {
   "name": "odb2graphml",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Convert orientdb json to graphml",
   "main": "index.js",
   "repository": {
