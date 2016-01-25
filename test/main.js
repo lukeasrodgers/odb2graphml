@@ -11,7 +11,8 @@ describe('convertFile', function() {
       vertexNames: ['User'],
       edgeNames: ['Friend']
     };
-    var v = lib.convertFile('test/support/odb.json', schemaInfo).then(function success(actualOutput) {
+    var v = lib.convertFile('test/support/odb.json', 'test/support/out.graphml', schemaInfo).then(function() {
+      actualOutput = fs.readFileSync('test/support/out.graphml', 'utf8');
       assert.equal(expectedOutput, actualOutput);
       done();
     }).catch(function(err) {

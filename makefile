@@ -1,2 +1,2 @@
 clean:
-	rm -f test/support/odb.graphml
+	rm -f test/support/out.graphml
