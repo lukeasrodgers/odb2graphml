@@ -6,3 +6,7 @@ The code should mostly work in its current verison, though there are almost cert
 
 It uses [oboe.js](http://oboejs.com/) for streaming JSON parsing, the idea being that some export files may be very large and we don't want to load them all into memory at once.
 Currently, this is kind of pointless since the writing part of the pipeline is non-stream-based, but I hope to implement that soon.
+
+## Requirements
+
+The code uses some ES6 features like template strings, so you will need a version of nodejs that supports those: at least v4.0.0.
