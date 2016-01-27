@@ -20,6 +20,20 @@ describe('convertFile', function() {
     });
   });
 
+  it('reports number of vertices and edges converted', function(done) {
+    var schemaInfo = {
+      vertexNames: ['User'],
+      edgeNames: ['Friend']
+    };
+    var v = lib.convertFile('test/support/odb.json', 'test/support/out.graphml', schemaInfo).then(function(result) {
+      assert.equal(result.edgeCount, 4);
+      assert.equal(result.vertexCount, 3);
+      done();
+    }).catch(function(err) {
+      done(err);
+    });
+  });
+
   describe('input with ampersands', function() {
     it('correctly converts ampersands', function(done) {
       var expectedOutput = fs.readFileSync('test/support/ampersand.graphml', 'utf8');
