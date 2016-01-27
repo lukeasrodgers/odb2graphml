@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/lukeasrodgers/odb2graphml.svg?branch=master)](https://travis-ci.org/lukeasrodgers/odb2graphml)
+
 This quickly-hacked-together node package converts the JSON exported by Orientdb into GraphML.
 
 The goal is for the generated GraphML to be compatible with importing into Neo4j, via [neo4j-shell-tools](https://github.com/jexp/neo4j-shell-tools).
