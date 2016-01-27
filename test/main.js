@@ -54,9 +54,9 @@ describe('convertFile', function() {
 
 describe('extractVerticesEdges', function() {
   it('works', function(done) {
-    var v = lib.extractVerticesEdges('test/support/odb.json', ['User'], ['Friend']).then(function(result) {
-      assert.equal(result.edges.length, 4);
-      assert.equal(result.vertices.length, 3);
+    var v = lib.extractVerticesEdges('test/support/odb.json', 'test/support/out.graphml', ['User'], ['Friend']).then(function(result) {
+      assert.equal(result.edgeCount, 4);
+      assert.equal(result.vertexCount, 3);
       done();
     }, function() {
       assert.ok(false);
