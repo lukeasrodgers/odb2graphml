@@ -11,6 +11,10 @@ npm install -g odb2graphml
 odb2graphml --help
 ```
 
+By default, this tool will remove any edges that don't have corresponding vertices/nodes. Neo4j's import tool will fail if it
+encounters edges that reference absent nodes. If, for some reason, you want to keep these edges, pass the `-k` or `--keep`
+option to the tool. This scenario (missing nodes) is likely to occur when doing a non-locking export of an OrientDB database.
+
 ## Example
 
 ```

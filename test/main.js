@@ -67,6 +67,23 @@ describe('convertFile', function() {
       });
     });
   });
+
+  describe('input with edges that reference missing nodes', function() {
+    it('prunes orphaned edges', function(done) {
+      var expectedOutput = fs.readFileSync('test/support/orphans.graphml', 'utf8');
+      var schemaInfo = {
+        vertexNames: ['User'],
+        edgeNames: ['Friend']
+      };
+      var v = lib.convertFile('test/support/orphans.json', 'test/support/out.graphml', schemaInfo, {pruneOrphanEdges: true}).then(function() {
+        actualOutput = fs.readFileSync('test/support/out.graphml', 'utf8');
+        assert.equal(actualOutput, expectedOutput);
+        done();
+      }).catch(function(err) {
+        done(err);
+      });
+    });
+  });
 });
 
 describe('extractVerticesEdges', function() {
