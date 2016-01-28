@@ -50,6 +50,23 @@ describe('convertFile', function() {
       });
     });
   });
+
+  describe('input with nodes and edges intermingled', function() {
+    it('orders nodes before edges', function(done) {
+      var expectedOutput = fs.readFileSync('test/support/odb.graphml', 'utf8');
+      var schemaInfo = {
+        vertexNames: ['User'],
+        edgeNames: ['Friend']
+      };
+      var v = lib.convertFile('test/support/disordered.json', 'test/support/out.graphml', schemaInfo).then(function() {
+        actualOutput = fs.readFileSync('test/support/out.graphml', 'utf8');
+        assert.equal(actualOutput, expectedOutput);
+        done();
+      }).catch(function(err) {
+        done(err);
+      });
+    });
+  });
 });
 
 describe('extractVerticesEdges', function() {

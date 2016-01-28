@@ -4,11 +4,6 @@ This quickly-hacked-together node package converts the JSON exported by Orientdb
 
 The goal is for the generated GraphML to be compatible with importing into Neo4j, via [neo4j-shell-tools](https://github.com/jexp/neo4j-shell-tools).
 
-The code should mostly work in its current verison, though there are almost certain bugs and edge cases I've missed.
-
-It uses [oboe.js](http://oboejs.com/) for streaming JSON parsing, the idea being that some export files may be very large and we don't want to load them all into memory at once.
-Hence, it should be able to handle files of (more or less) arbitrarily large size.
-
 ## Installation and usage
 
 ```
@@ -36,3 +31,17 @@ neo4j-sh (?)$
 ## Requirements
 
 The code uses some ES6 features like template strings, so you will need a version of nodejs that supports those: at least v4.0.0.
+
+## Notes
+
+The code should mostly work in its current verison, though there are almost certain bugs and edge cases I've missed.
+
+It uses [oboe.js](http://oboejs.com/) for streaming JSON parsing, the idea being that some export files may be very large and we don't want to load them all into memory at once.
+Hence, it should be able to handle files of (more or less) arbitrarily large size.
+
+Other notes:
+
+* In order to ensure all nodes are output into graphml before edges (which is required by neo4j's import tool), we make
+two passes through the input file; we could avoid this by using temporary files (also hacky) or in-memory write streams (which
+undermines the benefits of using streams in the first place). This approach is about 2x slower, but seems the least hacky, though
+more advanced knowledge of nodejs streams might provide a better solution.
