@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <graph id="G" edgedefault="directed">
+    <node id="#12:0" labels=":User"><data key="labels">:User</data><data key="name">luke</data><data key="age">32</data></node>
+    <node id="#12:1" labels=":User"><data key="labels">:User</data><data key="name">jim</data><data key="age">30</data></node>
+    <edge id="#13:0" label="Friend" source="#12:2" target="#12:1"><data key="label">Friend</data></edge>
+    <edge id="#13:1" label="Friend" source="#12:2" target="#12:0"><data key="label">Friend</data></edge>
+    <edge id="#13:2" label="Friend" source="#12:0" target="#12:1"><data key="label">Friend</data></edge>
+    <edge id="#13:3" label="Friend" source="#12:1" target="#12:0"><data key="label">Friend</data></edge>
+  </graph>
+</graphml>
