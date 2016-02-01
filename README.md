@@ -20,7 +20,7 @@ option to the tool. This scenario (missing nodes) is likely to occur when doing 
 NB: using `time` is obviously optional.
 
 ```
-$ time odb2graphml inputfile.json -v Vertex1Name,Vertex2Name -e Edge1Name,Edge2Name,Edge3Name
+$ time odb2graphml -i inputfile.json -v Vertex1Name,Vertex2Name -e Edge1Name,Edge2Name,Edge3Name
 Success! Converted 4587271 edges and 192799 vertices. Pruned 2 edges. Written to out.graphml
 
 real    12m58.002s

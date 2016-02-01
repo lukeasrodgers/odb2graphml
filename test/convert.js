@@ -1,5 +1,5 @@
 var fs = require('fs');
-var lib = require('../');
+var lib = require('../lib/convert');
 var assert = require('assert');
 
 'use strict';
@@ -82,21 +82,6 @@ describe('convertFile', function() {
       }).catch(function(err) {
         done(err);
       });
-    });
-  });
-});
-
-describe('extractVerticesEdges', function() {
-  it('works', function(done) {
-    var v = lib.extractVerticesEdges('test/support/odb.json', 'test/support/out.graphml', ['User'], ['Friend']).then(function(result) {
-      assert.equal(result.edgeCount, 4);
-      assert.equal(result.vertexCount, 3);
-      done();
-    }, function() {
-      assert.ok(false);
-      done();
-    }).catch(function(err) {
-      done(err);
     });
   });
 });

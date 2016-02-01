@@ -8,7 +8,7 @@
     "url": "https://github.com/lukeasrodgers/odb2graphml"
   },
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "TEST=true mocha --reporter spec"
   },
   "keywords": [
     "orientdb",
@@ -17,9 +17,10 @@
   "author": "Luke Rodgers <lukeasrodgers@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "commander": "^2.9.0",
+    "commander": "git://github.com/lukeasrodgers/commander.js.git#add-reset",
     "curry": "^1.0",
     "oboe": "^2.1.2",
+    "sinon": "^1.17.3",
     "xml-escape": "~1.0.0"
   },
   "devDependencies": {

@@ -1,5 +1,8 @@
 ## Master
 
+* Change commandline options: specify input and output files with -i, -o flags.
+* Improve code organization, add more end-to-end tests.
+
 ## 1.2.0
 
 * Prune orphaned edges. Neo4j import will fail if it detects edges that reference absent nodes.
