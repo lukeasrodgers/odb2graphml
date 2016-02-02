@@ -13,6 +13,7 @@ describe('run', function() {
     this.logStub = sinon.stub(console, 'log');
     this.errorStub = sinon.stub(console, 'error');
   });
+
   afterEach(function() {
     if (console.log.restore) {
       console.log.restore();
@@ -21,12 +22,14 @@ describe('run', function() {
       console.error.restore();
     }
   });
+
   describe('with edge and vertex specified', function() {
     beforeEach(function() {
       this.s = '-v User -e Friend -i test/support/odb.json -o test/support/out.graphml';
       this.argv = ['', ''].concat(this.s.split(' '));
       this.expectedOutput = fs.readFileSync('test/support/odb.graphml', 'utf8');
     });
+
     it('works', function(done) {
       var that = this;
       lib.run(this.argv).then(function() {
@@ -35,6 +38,7 @@ describe('run', function() {
         done();
       });
     });
+
     it('logs edge and vertex creation on completion', function(done) {
       var that = this;
       lib.run(this.argv).then(function() {
@@ -51,9 +55,11 @@ describe('run', function() {
       this.expectedOutput = fs.readFileSync('test/support/odb.graphml', 'utf8');
       sinon.stub(process, 'exit');
     });
+
     afterEach(function() {
       process.exit.restore();
     });
+
     it('logs failure', function(done) {
       var that = this;
       lib.run(this.argv).then(function() {
