@@ -63,9 +63,7 @@ function run(argv) {
     }, function(e) {
       notifyFailure(config, e);
       reject(e);
-      if (!process.env.TEST) {
-        process.exit(1);
-      }
+      process.exit(1);
     });
   });
 };
