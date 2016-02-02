@@ -1,5 +1,6 @@
 var commander = require('commander');
 
+var util = require('./lib/util.js');
 var convert = require('./lib/convert');
 convertFile = convert.convertFile;
 
@@ -57,10 +58,10 @@ function run(argv) {
 
   return new Promise(function(fulfill, reject) {
     convertFile(config.inputFilePath, config.outputFilePath, config.schemaInfo, config.options).then(function(result) {
-      var edgeCountString = result.edgeCount === 1 ? 'edge' : 'edges';
-      var vertexCountString = result.vertexCount === 1 ? 'vertex' : 'vertices';
-      var prunedEdgeCountString = result.prunedEdgeCount === 1 ? 'edge' : 'edges';
-      console.log(`Success! Converted ${result.edgeCount} ${edgeCountString} and ${result.vertexCount} ${vertexCountString}. Pruned ${result.prunedEdgeCount} ${prunedEdgeCountString}. Written to ${outputFilePath}`);
+      var edgeCountString = util.pluralize('edge', result.edgeCount);
+      var vertexCountString = util.pluralize('vertex', result.vertexCount, 'vertices');
+      var prunedEdgeCountString = util.pluralize('edge', result.prunedEdgeCount);
+      console.log(`Success! Converted ${edgeCountString} and ${vertexCountString}. Pruned ${prunedEdgeCountString}. Written to ${outputFilePath}`);
       fulfill();
     }, function(e) {
       console.error('Failed');
